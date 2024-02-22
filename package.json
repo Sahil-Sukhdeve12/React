@@ -1,0 +1,25 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "this is my react folder",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sahil-Sukhdeve12/React.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "sahil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sahil-Sukhdeve12/React/issues"
+  },
+  "homepage": "https://github.com/Sahil-Sukhdeve12/React#readme",
+  "devDependencies": {
+    "parcel": "^2.11.0"
+  }
+}
