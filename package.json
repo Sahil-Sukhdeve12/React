@@ -4,7 +4,9 @@
   "description": "this is my react folder",
   
   "scripts": {
-    "test": "jest"
+    "start": "parcel index.html", 
+    "build":"parcel build index.html",
+    "test": "jest" 
   },
   "repository": {
     "type": "git",
