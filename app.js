@@ -1,20 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-//jsx
-
-const jsxHeading=<h1 id="heading" className="root">react is basic necessity!!</h1>;
-
-const jsxHeading1=(<h1 
-    id="heading" 
-    className="root">
-        react is basic necessity!!
-        </h1>); 
-        // writting in multiple lines 
-
-// console.log(jsxHeading);
+const Title=()=>(
+    <h1 className="head" tabIndex="5">
+        React!!
+    </h1>
+);
 
 
+// React Functional Component
+const HeadingComponent=()=>(
+    <div id="container">
+        <Title/>
+        {/* return <h1>React's Functional Component</h1>; */}
+        <h1 className="heading">React's Functional Component</h1>
+    </div>
+);
+
+const HeadingComponent2=()=> <h1>React</h1>;
+
+// console.log(HeadingComponent);
 
 const root=ReactDOM.createRoot(document.getElementById("root"));
-root.render(jsxHeading);
+
+root.render(<HeadingComponent/>);
