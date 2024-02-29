@@ -7,11 +7,13 @@ const Title=()=>(
     </h1>
 );
 
+const number=10000;
 
 // React Functional Component
 const HeadingComponent=()=>(
     <div id="container">
         <Title/>
+        {number}
         {/* return <h1>React's Functional Component</h1>; */}
         <h1 className="heading">React's Functional Component</h1>
     </div>
