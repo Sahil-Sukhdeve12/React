@@ -1,6 +1,10 @@
 import { LOGO_URL } from "../utils/constants";
+import { useState } from "react";
 
 export default function Header(){
+    const [btnNameReact,setbtnNameReact]=useState("Login");
+    console.log("header render");
+    
     return(
         <div className="header">
             <div className="logo-container">
@@ -13,6 +17,10 @@ export default function Header(){
                     <li>About Us</li>
                     <li>Contact us</li> 
                     <li>Cart</li>
+                    <button className="login" onClick={()=>{
+                        btnNameReact==="login" ? setbtnNameReact("logout"):setbtnNameReact("login");
+                    }}>
+                        {btnNameReact}  </button>
                 </ul>
             </div>
         </div>

@@ -1,6 +1,7 @@
 import RestaurantCard from "./ResturantCard";
 import { useState,useEffect } from "react";
 import resList from "../utils/mockData";
+import Shimmer from "./Shimmer";
 
 
 const Body=()=>{
@@ -19,7 +20,12 @@ const Body=()=>{
     const json=await data.json();
 
     console.log(json);
-    setListOfResturants(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
+    setListOfResturants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants); //implemented optional chaining
+  }
+
+  //conditional rendering
+  if(listOfResturants.length===0){
+    return <Shimmer/>
   }
 
   return (
