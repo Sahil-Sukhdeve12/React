@@ -68,8 +68,12 @@
 .login{
     padding: 0 20px;
 }
-
+/* 
 .filter{
-    display: flex;
-    margin-top: 5px;
+    
 }
+
+.filter-btn{
+    display: flex;
+    margin-top: 10px;
+} */

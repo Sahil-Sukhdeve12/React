@@ -8,10 +8,11 @@ const Body=()=>{
   // const arr=useState();
   // const[listOfResturants,setListOfResturants]=arr;
 
+   const[filteredRest,setfilteredRest]=useState([]);
+
   const [searchText,setsearchText]=useState("");
 
-  const[filteredRest,setfilterRest]=useState("");
-
+  
   // console.log("Body rendered");
 
   useEffect(()=>{
@@ -24,55 +25,66 @@ const Body=()=>{
     );
     const json=await data.json();
 
-    console.log(json);
+    // console.log(json);
     setListOfResturants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants); //implemented optional chaining
-  }
+    
+    //updating for if we make a empty search in search bar
+    setfilteredRest(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  } 
 
   //conditional rendering
   if(listOfResturants.length===0){
     return <Shimmer/>
   }
-
+ 
   return (
     <div className="body">
-
-        <div className="filter">
+      
           <div className="search">
-          <input type="text" className="search-box" value={searchText} 
-          onChange={(e)=>{
-            setsearchText(e.target.value);
-          }}/>
-          <button
-            onClick={()=>{
-              console.log(searchText);
+              <input type="text" className="search-box" placeholder="Search for restaurants" value={searchText} 
+                  onChange={(e)=>{
+                  setsearchText(e.target.value);
+
+                  const filteredList = listOfResturants.filter(
+                  (res) => res.info.name.toLowerCase().includes(e.target.value.toLowerCase())
+                );
+                setfilteredRest(filteredList);
+
+              }}/>
+          
+              <button className="search-btn"
+              onClick={()=>{
+              // console.log(searchText);
 
               const filteredRest=listOfResturants.filter((res)=>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
-              // setfilterRest(filteredRest);
-              setListOfResturants(filteredRest); 
-            }}
-          >Search</button>
-        </div>
+              setfilteredRest(filteredRest);
+              // setListOfResturants(filteredRest);
+              }} 
+              >Search</button>
+          </div>
 
-          <button className="filter-btn"
-          onClick={()=>{
-            const filteredList=listOfResturants.filter(
+          <div className="filter">
+              <button className="filter-btn"
+              onClick={()=>{
+              const filteredList=listOfResturants.filter(
               (res)=>res.info.avgRating>4
-            );
-            setListOfResturants(filteredList);
-          }}>Top Rated Resturants</button>
-        </div>
+              );
+              // console.log(listOfResturants);
+              // console.log(filteredList);
+              
+              setListOfResturants(filteredList);
+              }}><h3>Top Rated Resturants</h3></button>
+          
+            </div>
 
         
-
         <div className="res-container">
-            {listOfResturants.map((restaurant)=>(
+            {filteredRest.map((restaurant)=>(
                 <RestaurantCard key={restaurant.info.id} resData={restaurant}/>
             ))}
-            
         </div>
-
         
     </div>
     
