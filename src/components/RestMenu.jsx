@@ -22,16 +22,17 @@ export default function RestMenu(){
 
     if (resInfo===null ) return <Shimmer/>;
 
-    const {name,cuisines,costForTwoMessage} = resInfo?.cards[0]?.card?.card?.info;
-    const {itemCards} = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
-    //  console.log(itemCards);
+    // const {name,cuisines,costForTwoMessage} = resInfo?.data?.cards[0]?.card?.card?.info;
+    const rest=resInfo.cards[2].card.card.info;
+    const itemCards = resInfo?.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards;
+    console.log(itemCards);
 
     return (
         <div className="menu">
-            <h1>{name}</h1> 
-            {/* <h3>{costForTwoMessage/100}</h3> */}
+            <h1>{rest?.name}</h1> 
+            <h3>{rest?.costForTwoMessage}</h3>
             <p>
-                Cuisines: {cuisines.join(",")}
+                Cuisines: {rest?.cuisines.join(",")}
             </p>
             <ul>
                 {itemCards?.map((item)=>(

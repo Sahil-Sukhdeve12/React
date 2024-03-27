@@ -33,7 +33,13 @@
 }
 
 .search{
+    
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* height: 100vh; */
 }
 
 .res-card > img{
@@ -77,3 +83,9 @@
     display: flex;
     margin-top: 10px;
 } */
+
+.search-box{
+    width: 400px;
+    height: 25px;
+    /* text-align: center; */
+}

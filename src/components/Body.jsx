@@ -4,6 +4,7 @@ import Shimmer from "./Shimmer";
 import {Link} from "react-router-dom";
 
 
+
 const Body=()=>{
   const[listOfResturants,setListOfResturants]=useState([]);
   // const arr=useState();
@@ -42,7 +43,9 @@ const Body=()=>{
     <div className="body">
       
           <div className="search">
-              <input type="text" className="search-box" placeholder="Search for restaurants" value={searchText} 
+            
+              <input type="text" className="search-box" placeholder="Search for restaurants and food" 
+               value={searchText} 
                   onChange={(e)=>{
                   setsearchText(e.target.value);
 
@@ -52,7 +55,9 @@ const Body=()=>{
                 setfilteredRest(filteredList);
 
               }}/>
-          
+              
+              
+              {/*
               <button className="search-btn"
               onClick={()=>{
               // console.log(searchText);
@@ -63,10 +68,10 @@ const Body=()=>{
               setfilteredRest(filteredRest);
               // setListOfResturants(filteredRest);
               }} 
-              >Search</button>
+              >Search</button> */}
           </div>
 
-          <div className="filter">
+          {/* <div className="filter">
               <button className="filter-btn"
               onClick={()=>{
               const filteredList=listOfResturants.filter(
@@ -79,6 +84,7 @@ const Body=()=>{
               }}><h3>Top Rated Resturants</h3></button>
           
             </div>
+            */}
 
         
         <div className="res-container">
