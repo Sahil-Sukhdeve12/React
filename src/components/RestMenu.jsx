@@ -25,7 +25,7 @@ export default function RestMenu(){
     // const {name,cuisines,costForTwoMessage} = resInfo?.data?.cards[0]?.card?.card?.info;
     const rest=resInfo.cards[2].card.card.info;
     const itemCards = resInfo?.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards;
-    console.log(itemCards);
+    // console.log(itemCards);
 
     return (
         <div className="menu">
