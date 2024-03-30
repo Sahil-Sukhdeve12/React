@@ -28,12 +28,13 @@ export default class About extends Component {
     // }
 
     render(){
-        console.log("Parent render");
+        // console.log("Parent render");
         return(
             <div>
                 <h1>About</h1>
                 <h2>This is our ordering app</h2>
-                <h3><UserClass name={"Sahil S"} location={"Bhandara"}/></h3>
+                {/* <h3><UserClass name={"Sahil S"} location={"Bhandara"}/></h3> */}
+                <h3><User/></h3>
                 
             </div>
         )
