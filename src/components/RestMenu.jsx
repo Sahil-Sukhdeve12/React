@@ -1,24 +1,12 @@
-import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-import { MENU_API } from "../utils/constants";
 import {useParams} from "react-router-dom";
+import useRestMenu from "../utils/useRestMenu";
 
 export default function RestMenu(){
-    const [resInfo,setresInfo]=useState(null);
-
+    // const [resInfo,setresInfo]=useState(null);
     const {resId}=useParams();
 
-    useEffect(()=>{
-        fetchMenu();
-    },[]); // it will be called 1 time after initial render
-
-    const fetchMenu=async()=>{
-        const data=await fetch(MENU_API+resId);
-        const json=await data.json();
-
-        //console.log(json);
-        setresInfo(json.data);
-    };
+    const resInfo=useRestMenu(resId);
 
     if (resInfo===null ) return <Shimmer/>;
 
@@ -43,7 +31,6 @@ export default function RestMenu(){
                     </li>
                 ))}
             </ul>
-            
         </div>
     )
 

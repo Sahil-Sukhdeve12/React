@@ -2,10 +2,13 @@ import RestaurantCard from "./ResturantCard";
 import { useState,useEffect } from "react";
 import Shimmer from "./Shimmer";
 import {Link} from "react-router-dom";
-
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 
 const Body=()=>{
+  
+  let OnlineStatus=useOnlineStatus();
+   
   const[listOfResturants,setListOfResturants]=useState([]);
   // const arr=useState();
   // const[listOfResturants,setListOfResturants]=arr;
@@ -38,13 +41,25 @@ const Body=()=>{
   if(listOfResturants.length===0){
     return <Shimmer/>
   }
+
+  
+
+  if(OnlineStatus===false){
+    return(
+      <div>
+        <h1>
+          Look's like your offline. please check your internet connection !!
+        </h1>
+      </div>
+    )
+  }
  
   return (
     <div className="body">
-      
-          <div className="search">
+      <div className="filter flex items-center justify-between">
+          <div className="search m-4 p-4 flex items-center ml-[550px]">
             
-              <input type="text" className="search-box" placeholder="Search for restaurants and food" 
+              <input type="text" className="border border-solid border-black w-[350px]" placeholder="Search for restaurants and food" 
                value={searchText} 
                   onChange={(e)=>{
                   setsearchText(e.target.value);
@@ -57,8 +72,8 @@ const Body=()=>{
               }}/>
               
               
-              {/*
-              <button className="search-btn"
+              
+              <button className="px-4 py-1 bg-green-100 m-4 rounded-lg"
               onClick={()=>{
               // console.log(searchText);
 
@@ -68,11 +83,13 @@ const Body=()=>{
               setfilteredRest(filteredRest);
               // setListOfResturants(filteredRest);
               }} 
-              >Search</button> */}
+              >Search</button> 
+              
+
           </div>
 
-          {/* <div className="filter">
-              <button className="filter-btn"
+           <div className="search m-4 p-4 flex items-end">
+              <button className="px-4 py-2 bg-red-100 m-4 rounded-lg"
               onClick={()=>{
               const filteredList=listOfResturants.filter(
               (res)=>res.info.avgRating>4
@@ -84,7 +101,9 @@ const Body=()=>{
               }}><h3>Top Rated Resturants</h3></button>
           
             </div>
-            */}
+            
+            </div>
+            
 
         
         <div className="res-container">
