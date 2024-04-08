@@ -1,16 +1,35 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState} from "react";
+import { useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-// import logo_main from "https://github.com/Sahil-Sukhdeve12/React/blob/main/prod_utils";
+import {logo_main} from './logo_main.jpg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun,faMoon } from "@fortawesome/free-solid-svg-icons";
+// import DarkMode from "./DarkMode";
 
 export default function Header(){
     const [btnNameReact,setbtnNameReact]=useState("Login");
+    const [darkbtn,setdarkbtn]=useState(false);
     // console.log("header render");
 
     // useEffect(()=>{
     //     console.log("useEffect is called");
     // });
+
+    const[theme,settheme]=useState("light");
+
+    useEffect(()=>{
+        if(theme==="dark"){
+            document.documentElement.classList.add("dark");
+        }
+        else{
+            document.documentElement.classList.remove("dark");
+        }
+    },[theme]);
+
+    const handleThemeSwitch=()=>{
+        settheme(theme==="dark"?"light":"dark");
+    };
 
     const onlineStatus=useOnlineStatus();
     
@@ -38,7 +57,21 @@ export default function Header(){
                     <li className="px-4">
                         <Link to="/Grocery">Store</Link>
                     </li>
+
+                    <div className=" dark:bg-black flex ">
+                    <button className="rounded-3xl" 
+                    // onClick={()=>{
+                    //     // darkbtn===<FontAwesomeIcon icon={faSun}/> ? setdarkbtn(<FontAwesomeIcon icon={faMoon}/>):setdarkbtn(<FontAwesomeIcon icon={faSun}/>);
+                    //     setdarkbtn(!darkbtn);
+                    // }}
+                    onClick={handleThemeSwitch}
+                    >
+                        Dark{/* {theme ===  "Dark" ? "Light" :"dark"} */}
+                       </button>
+                    </div>
+
                     <li className="px-4">Cart</li>
+
                     <button className="login" onClick={()=>{
                         btnNameReact==="login" ? setbtnNameReact("logout"):setbtnNameReact("login");
                     }}>
