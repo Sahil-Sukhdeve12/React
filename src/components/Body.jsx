@@ -104,10 +104,8 @@ const Body=()=>{
           
             </div>
             
-            </div>
+          </div>
             
-
-        
         <div className="flex flex-wrap">
             {filteredRest.map((restaurant)=>(
                 <Link key={restaurant.info.id} to={"restaurants/"+restaurant.info.id}> 
