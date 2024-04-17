@@ -1,4 +1,4 @@
-import React, { lazy,Suspense } from "react";
+import React, { lazy,Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body"; 
@@ -8,15 +8,31 @@ import Error from "./components/Error";
 import RestMenu from "./components/RestMenu";
 import { createBrowserRouter,RouterProvider,Outlet} from "react-router-dom";
 // import Grocery from "./components/Grocery";
+import UserContext from "./utils/UserContext";
 
 const Grocery=lazy(()=>import("./components/Grocery")); //callback function takes path as a i/p
 
 const AppLayout = () =>{
+
+    const[userName,setuserName]=useState();
+
+    //authentication
+    useEffect(()=>{
+        // check user is logged in or not
+        const data={
+            name:"sahil",
+        };
+        setuserName(data.name);
+    },[]);
+
+
     return(
+        <UserContext.Provider value={{loggedInUser:userName}}>
         <div className="app">
             <Header/>
             <Outlet/>
         </div>
+        </UserContext.Provider>
     )
 }
 

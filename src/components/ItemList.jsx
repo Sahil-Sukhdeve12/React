@@ -1,6 +1,7 @@
 import { CDN_URL } from "../utils/constants";
 
-export default function ItemList({items}){
+export default function ItemList({items,dummy}){
+    console.log(dummy);
     // console.log(items);
     return(
         <div>

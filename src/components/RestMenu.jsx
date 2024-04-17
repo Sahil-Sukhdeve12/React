@@ -2,12 +2,17 @@ import Shimmer from "./Shimmer";
 import {useParams} from "react-router-dom";
 import useRestMenu from "../utils/useRestMenu";
 import RestCategory from "./RestCategory";
+import { useState } from "react";
 
 export default function RestMenu(){
     // const [resInfo,setresInfo]=useState(null);
     const {resId}=useParams();
 
+    const dummy="dummy data";
+
     const resInfo=useRestMenu(resId);
+
+    const[showIndex,setshowIndex]=useState(null); // for collapsing categories(at a time one)
 
     if (resInfo===null ) return <Shimmer/>;
 
@@ -29,9 +34,6 @@ export default function RestMenu(){
 
     // console.log(categories);
 
-    
-
-
     return (
         <div className="text-center">
             <h1 className="font-bold my-6 text-2xl">{rest?.name}</h1> 
@@ -40,8 +42,13 @@ export default function RestMenu(){
                 Cuisines: {rest?.cuisines.join(",")}
             </p>
 
-            {categories?.map((category)=>(
-                <RestCategory key={category.card.card.title} data={category.card.card}/>
+            {/* categories accordians */}
+            {categories?.map((category,index)=>(
+                //controlled component
+                <RestCategory key={category.card.card.title} data={category.card.card} 
+                    showItems={index === showIndex ? true : false}
+                    setshowIndex={()=>setshowIndex(index)} dummy={dummy}
+                    />
             ))}
 
             {/* <ul>
@@ -54,7 +61,7 @@ export default function RestMenu(){
                 ))}
             </ul> */}
 
-            {/* categories accordians */}
+            
 
         </div>
     )

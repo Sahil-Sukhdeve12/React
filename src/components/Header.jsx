@@ -1,14 +1,19 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState,useEffect} from "react";
+import { useState,useEffect,useContext} from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import {logo_main} from './logo_main.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun,faMoon } from "@fortawesome/free-solid-svg-icons";
 // import DarkMode from "./DarkMode";
+import UserContext from "../utils/UserContext";
 
 export default function Header(){
     const [btnNameReact,setbtnNameReact]=useState("Login");
+
+    const loggedInUser=useContext(UserContext);
+    console.log(loggedInUser);
+
     const [darkbtn,setdarkbtn]=useState(false);
     // console.log("header render");
 
@@ -71,11 +76,15 @@ export default function Header(){
                     </div>
 
                     <li className="px-4">Cart</li>
+                    
+                    {/* <li className="px-4">{loggedInUser}</li> */}
 
                     <button className="login" onClick={()=>{
                         btnNameReact==="login" ? setbtnNameReact("logout"):setbtnNameReact("login");
                     }}>
                         {btnNameReact}  </button>
+
+                        
                 </ul>
             </div>
         </div>
