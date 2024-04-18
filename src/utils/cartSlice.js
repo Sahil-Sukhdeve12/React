@@ -4,7 +4,7 @@ const cartSlice=createSlice({
     name:"cart", //config name
     initialState:{
         items:[], // giving empty card array
-    },
+    }, 
     reducers:{ //(object)
         addItem:(state,action)=>{ // this is reducer function
             //mutating the state here (directly modifying it)
