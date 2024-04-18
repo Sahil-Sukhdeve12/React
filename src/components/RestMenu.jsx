@@ -23,10 +23,6 @@ export default function RestMenu(){
     // console.log(resInfo?.cards[4].groupedCard.cardGroupMap.REGULAR.cards);
     // console.log(resInfo)
 
-    // const categories=resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards?.filter((c)=>
-    //     c?.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-    // );
-
     //we need to filter card which has following text inside it
     const categories = resInfo?.cards[4].groupedCard.cardGroupMap.REGULAR.cards.filter( 
         (c) => c.card.card["@type"] ===  "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
@@ -60,8 +56,6 @@ export default function RestMenu(){
                     </li>
                 ))}
             </ul> */}
-
-            
 
         </div>
     )
