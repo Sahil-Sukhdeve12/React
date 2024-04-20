@@ -11,6 +11,7 @@ import { createBrowserRouter,RouterProvider,Outlet} from "react-router-dom";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 const Grocery=lazy(()=>import("./components/Grocery")); //callback function takes path as a i/p
 
@@ -26,7 +27,6 @@ const AppLayout = () =>{
         };
         setuserName(data.name);
     },[]);
-
 
     return(
         <Provider store={appStore}>
@@ -66,7 +66,11 @@ const appRouter=createBrowserRouter([
         {
             path:"/grocery",
             element:<Suspense fallback={<h1>loading...</h1>}><Grocery/></Suspense>
-        }
+        },
+        {
+            path:"/cart",
+            element:<Cart/>
+        },
         ],
     },
     

@@ -4,15 +4,16 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import {logo_main} from './logo_main.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun,faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faSun,faMoon,faCartShopping } from "@fortawesome/free-solid-svg-icons";
 // import DarkMode from "./DarkMode";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 export default function Header(){
     const [btnNameReact,setbtnNameReact]=useState("Login");
 
     const loggedInUser=useContext(UserContext);
-    console.log(loggedInUser);
+    // console.log(loggedInUser);
 
     const [darkbtn,setdarkbtn]=useState(false);
     // console.log("header render");
@@ -37,6 +38,10 @@ export default function Header(){
     };
 
     const onlineStatus=useOnlineStatus();
+
+    //subscribing to the store using a selector
+    const cartItems=useSelector((store)=>store.cart.items);
+    // console.log(cartItems);
     
     return(
         <div className="flex justify-between bg-yellow-100 shadow-lg">
@@ -75,7 +80,9 @@ export default function Header(){
                        </button>
                     </div>
 
-                    <li className="px-4">Cart</li>
+                    <li className="px-4"><Link to="/cart"> <FontAwesomeIcon icon={faCartShopping} />({cartItems.length} items)
+                    </Link>
+                    </li>
                     
                     {/* <li className="px-4">{loggedInUser}</li> */}
 
@@ -84,7 +91,6 @@ export default function Header(){
                     }}>
                         {btnNameReact}  </button>
 
-                        
                 </ul>
             </div>
         </div>
