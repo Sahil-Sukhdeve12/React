@@ -21,6 +21,11 @@
   },
   "homepage": "https://github.com/Sahil-Sukhdeve12/React#readme",
   "devDependencies": {
+    "@babel/core": "^7.24.4",
+    "@babel/preset-env": "^7.24.4",
+    "@testing-library/react": "^15.0.2",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
     "parcel": "^2.11.0",
     "process": "^0.11.10",
     "tailwindcss": "^3.4.3"
