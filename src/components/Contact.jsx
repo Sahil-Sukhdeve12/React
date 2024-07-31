@@ -17,7 +17,7 @@ export default function Contactus(){
 
                 <details className="flex-grow">
                     <summary className="block text-xl mb-2 cursor-pointer border rounded py-2 px-3 text-gray-900 mr-14">Select an Option ⬇</summary>
-                    <select multiple name="Types of Enquiry" size="4" className="border rounded  py-2 px-3 text-gray-700">
+                    <select multiple name="Types of Enquiry" size="4" className="border rounded w-3/4 mb-2 py-2 px-3 mr-14 text-gray-700 ">
                         
                         <option value="sales">Sales</option>
                         <option value="food-packaging">Food Packaging</option>
